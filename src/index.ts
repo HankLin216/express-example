@@ -1,7 +1,11 @@
-import app from "./app";
+import app from './app';
+import dotenv from 'dotenv';
 
-const server = app.listen(5050, () => {
-  console.log("Server start listening at 5050 port...");
+const envFile = `.env.${process.env.NODE_ENV}`;
+dotenv.config({ path: envFile });
+
+const server = app.listen(process.env.PORT, () => {
+  console.log(`Server start listening at ${process.env.PORT} port...`);
 });
 
 // const exitHandler = () => {
