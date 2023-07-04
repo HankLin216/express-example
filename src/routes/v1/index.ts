@@ -1,14 +1,14 @@
-import express from "express";
-import userRoute from "./user.route";
+import express from 'express'
+import userRoute from './user.route'
 
-const router = express.Router();
+const router = express.Router()
 
 const defaultRoutes = [
   {
-    path: "/users",
+    path: '/users',
     route: userRoute,
   },
-];
+]
 
 //   const devRoutes = [
 //     // routes available only in development mode
@@ -19,8 +19,8 @@ const defaultRoutes = [
 //   ];
 
 defaultRoutes.forEach((route) => {
-  router.use(route.path, route.route);
-});
+  router.use(route.path, route.route)
+})
 
 /* istanbul ignore next */
 // if (config.env === 'development') {
@@ -29,4 +29,4 @@ defaultRoutes.forEach((route) => {
 //     });
 //   }
 
-export default router;
+export default router
