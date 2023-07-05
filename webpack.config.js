@@ -1,7 +1,11 @@
-const path = require("path");
-const nodeExternals = require("webpack-node-externals");
+const path = require('path')
+const nodeExternals = require('webpack-node-externals')
+const DefinePlugin = require('webpack').DefinePlugin
 
-const { NODE_ENV } = process.env;
+const { NODE_ENV } = process.env
+if (NODE_ENV === 'production') {
+  require('dotenv').config({ path: `./.env` })
+}
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -27,4 +31,9 @@ module.exports = {
       },
     ],
   },
-};
+  plugins: [
+    new DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+    }),
+  ],
+}

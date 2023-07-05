@@ -7,6 +7,14 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Debug (webpack)",
+      "program": "${workspaceFolder}\\webpack.config.js",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["build"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Debug (babel)",
       "program": "${workspaceFolder}\\src\\index.ts",
       "runtimeExecutable": "yarn",
