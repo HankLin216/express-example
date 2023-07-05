@@ -1,11 +1,8 @@
 import app from './app'
-import dotenv from 'dotenv'
+import config from './configs/config'
 
-const envFile = `./src/configs/.env.${process.env.NODE_ENV}`
-dotenv.config({ path: envFile })
-
-const server = app.listen(process.env.PORT, () => {
-  console.log(`Server start listening at ${process.env.PORT} port...`)
+const server = app.listen(config.port, () => {
+  console.log(`Server start listening at ${config.port} port...`)
 })
 
 const exitHandler = (): void => {
