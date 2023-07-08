@@ -8,7 +8,7 @@ const getUsers = catchAsync(async (req: Request, res: Response): Promise<void> =
 })
 
 const getUser = catchAsync(async (req: Request, res: Response): Promise<void> => {
-  throw Error('NOT FOUND')
+  throw Error('NOT FOUND123!!!')
 })
 
 export default { getUsers, getUser }

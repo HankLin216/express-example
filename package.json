@@ -4,9 +4,12 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "npm run lint && cross-env NODE_ENV=development BABEL_ENV=development babel-node --nolazy --extensions .ts ./src/index.ts",
+    "start": "npm run lint && cross-env NODE_ENV=development BABEL_ENV=development nodemon --exec babel-node --nolazy --extensions .ts ./src/index.ts",
     "build": "npm run lint && cross-env NODE_ENV=production webpack",
-    "lint": "eslint src/**/*.ts"
+    "build-image": "npm run build && npm run image",
+    "lint": "eslint src/**/*.ts",
+    "image": "docker build . -t tsuhan_lin/express-example",
+    "docker-run": "docker run --rm -d -p 5001:5001/tcp tsuhan_lin/express-example:latest"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",
@@ -19,7 +22,6 @@
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.60.1",
     "babel-loader": "^9.1.2",
-    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "eslint": "^8.0.1",
     "eslint-config-standard": "^17.1.0",
@@ -30,7 +32,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-standard": "^5.0.0",
-    "http-status": "^1.6.2",
+    "nodemon": "^2.0.22",
     "prettier": "^2.8.8",
     "source-map-loader": "^4.0.1",
     "ts-loader": "^9.4.4",
@@ -40,8 +42,10 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "http-status": "^1.6.2",
     "joi": "^17.9.2"
   }
 }
